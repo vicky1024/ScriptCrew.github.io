@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Website - 3D Maze Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="title">ScriptCrew</div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="Projects.html">Projects</a>
+      <a href="trying.html">Socials</a>
+    </div>
+  </div>
+
+  <div class="project-hero">
+    <h1>3D Maze Game</h1>
+    <p class="author-name">By Victoria Santiago</p>
+  </div>
+
+  <div class="project-content">
+    <div class="project-description">
+      <h2>Step-by-Step Instructions</h2>
+
+      <div class="step-container">
+        <div class="step active">
+          <h3>Step 1: Setting Up Your Project</h3>
+          <p>In this step, you'll set up the basic structure for your project. Follow these instructions to create and configure your project files.</p>
+
+          <h4>Create Your HTML File</h4>
+          <p>First, create an HTML file named <code>index.html</code>. This file will set up the structure of your web page and include necessary libraries and scripts. Use the following code for your <code>index.html</code> file:</p>
+
+            <pre><code>&lt;!DOCTYPE html&gt;
+          &lt;html&gt;
+
+          &lt;head&gt;
+            &lt;meta charset="utf-8"&gt;
+            &lt;meta name="viewport" content="width=device-width"&gt;
+            &lt;title&gt;repl.it&lt;/title&gt;
+            &lt;link href="style.css" rel="stylesheet" type="text/css" /&gt;
+
+            &lt;!-- p5play --&gt;
+            &lt;script src="https://cdn.jsdelivr.net/npm/p5@1/lib/p5.min.js"&gt;&lt;/script&gt;
+            &lt;script src="https://cdn.jsdelivr.net/npm/p5@1/lib/addons/p5.sound.min.js"&gt;&lt;/script&gt;
+
+            &lt;!-- updated to local files --&gt;
+            &lt;script src="planck.min.js"&gt;&lt;/script&gt;
+            &lt;script src="p5play.js"&gt;&lt;/script&gt;
+
+          &lt;/head&gt;
+
+          &lt;body&gt;
+            &lt;script src="script.js"&gt;&lt;/script&gt;
+          &lt;/body&gt;
+
+          &lt;/html&gt;</code></pre>
+
+          <h4>Explanation</h4>
+          <ul>
+            <li><strong><code>&lt;!DOCTYPE html&gt;</code>:</strong> This declaration defines the document type and version of HTML being used (HTML5 in this case).</li>
+            <li><strong><code>&lt;html&gt;</code>:</strong> The root element that wraps all your HTML content.</li>
+            <li><strong><code>&lt;head&gt;</code>:</strong> Contains meta-information about the document, such as character encoding and viewport settings.</li>
+            <li><strong><code>&lt;meta charset="utf-8"&gt;</code>:</strong> Sets the character encoding to UTF-8, ensuring proper display of characters.</li>
+            <li><strong><code>&lt;meta name="viewport" content="width=device-width"&gt;</code>:</strong> Ensures proper scaling on mobile devices.</li>
+            <li><strong><code>&lt;title&gt;repl.it&lt;/title&gt;</code>:</strong> Sets the title of the web page, which appears in the browser tab.</li>
+            <li><strong><code>&lt;link href="style.css" rel="stylesheet" type="text/css"&gt;</code>:</strong> Links to an external CSS file for styling your project.</li>
+            <li><strong><code>&lt;script src="https://cdn.jsdelivr.net/npm/p5@1/lib/p5.min.js"&gt;&lt;/script&gt;</code>:</strong> Includes the p5.js library for creating graphical and interactive experiences.</li>
+            <li><strong><code>&lt;script src="https://cdn.jsdelivr.net/npm/p5@1/lib/addons/p5.sound.min.js"&gt;&lt;/script&gt;</code>:</strong> Includes the p5.sound library for handling sound in your project.</li>
+            <li><strong><code>&lt;script src="planck.min.js"&gt;&lt;/script&gt;</code>:</strong> Includes the Planck.js library, a 2D physics engine.</li>
+            <li><strong><code>&lt;script src="p5play.js"&gt;&lt;/script&gt;</code>:</strong> Includes the p5.play library, which extends p5.js with game development functionality.</li>
+            <li><strong><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code>:</strong> Includes your custom JavaScript file where you'll write the game logic and other functionalities.</li>
+          </ul>
+        </div>
+     
+
+        <div class="step">
+          <h3>Step 2: Define the Maze and Variables</h3>
+          <p>In your JavaScript file, you need to define the maze grid and several key variables. Each of these variables plays an important role in how your maze game functions:</p>
+
+          <ul>
+            <li><strong><code>maze</code></strong>: This is a 2D array representing the maze layout. Each element in the array specifies different parts of the maze:
+              <ul>
+                <li><code>1</code> represents walls or obstacles that the player cannot pass through.</li>
+                <li><code>0</code> represents open paths where the player can move.</li>
+                <li><code>2</code> denotes special items or the goal location within the maze.</li>
+              </ul>
+              <p>For example:</p>
+              <pre><code>let maze = [
+          [1, 1, 1, 1, 1],
+          [1, 0, 0, 0, 1],
+          [1, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1],
+          [1, 1, 1, 2, 1]
+        ];</code></pre>
+              <p>This layout creates a maze with walls surrounding the paths. The player can navigate through the <code>0</code> values and aim to reach the <code>2</code> values.</p>
+            </li>
+
+            <li><strong><code>blockSize</code></strong>: This variable defines the size of each block or cell in the maze grid, determining how large each block appears on the canvas. For instance, if <code>blockSize</code> is set to <code>50</code>, each block in the maze will be rendered as a 50x50 pixel square on the screen.</li>
+
+            <li><strong><code>playerX</code></strong> and <strong><code>playerY</code></strong>: These variables track the player's position in the maze grid. They correspond to the player's coordinates and are used for movement and collision detection:
+              <ul>
+                <li><code>playerX</code> represents the player's horizontal position in the maze.</li>
+                <li><code>playerY</code> represents the player's vertical position in the maze.</li>
+              </ul>
+              <p>For example:</p>
+              <pre><code>let playerX = 1; // Player's x-coordinate in the maze
+        let playerY = 1; // Player's y-coordinate in the maze</code></pre>
+            </li>
+
+            <li><strong><code>gameWon</code></strong>: This boolean variable indicates whether the game has been won or not. If <code>gameWon</code> is set to <code>true</code>, the game will display a win message and prevent further gameplay. This variable helps manage the game state and control the win condition.</li>
+          </ul>
+
+          <p>Here’s how you can initialize these variables in your JavaScript code:</p>
+          <pre><code>// Define the maze as a 2D array
+        let maze = [
+          // Define your maze layout here
+          [1, 1, 1, 1, 1],
+          [1, 0, 0, 0, 1],
+          [1, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1],
+          [1, 1, 1, 0, 1]
+        ];
+
+        // Define the size of each maze block
+        let blockSize = 50;
+
+        // Initialize the player's starting position
+        let playerX = 1; // Player's x-coordinate in the maze
+        let playerY = 1; // Player's y-coordinate in the maze
+
+        // Flag to check if the game is won
+        let gameWon = false;</code></pre>
+        </div>
+
+        <div class="step">
+          <h3>Step 3: Setup Function</h3>
+          <p>In the `setup` function, create a canvas for your game and set up text display for win messages.</p>
+          <pre><code>function setup() {
+  createCanvas(750, 600, WEBGL);
+  noStroke();
+
+  txt = createDiv('');
+  txt.position(width / 4, height / 4);
+  txt.style('font-size', '40px');
+  txt.style('font-weight', 'bold');
+  txt.style('color', 'green');
+  txt.style('width', '400px');
+  txt.html("You found hope! Even though you are afraid of the darkness, you still can always find hope. There will always be a light that you can follow.");
+  txt.hide(); // txt.show() will bring it back
+}</code></pre>
+  <p>The creatCanvas function sets up the width and height of the screen. WEBGL allows you to make objects in 3D!!</p>
+  <p>The noStroke function ensures that your 3D shapes don't have visible lines</p>
+  <p>You can change the width, height, font, color of your text to anything you'd like!!</p>
+        </div>
+
+        <div class="step">
+          <h3>Step 4: Drawing the Maze and Player</h3>
+          <p>In this step, you'll learn how to visually represent the maze and the player in your game. We'll cover how to use the <code>draw</code> function to render the maze and player, including how to set up the camera view, light sources, and rendering the game elements in 3D space.</p>
+
+          <h4>Setting Up the Camera</h4>
+          <p>The camera is essential for viewing your 3D game world. In this code, the camera position and orientation are set based on the player’s position to follow the player as they move through the maze.</p>
+          <pre><code>
+          let camX = (playerX - maze[0].length / 2) * blockSize;
+          let camY = (playerY - maze.length / 2) * blockSize;
+          let camZ = (height / 2) / tan(PI / 6);
+
+          camera(camX, camY, camZ, camX, camY, 0, 0, 1, 0);
+          </code></pre>
+          <ul>
+            <li><strong><code>camX</code> and <code>camY</code>:</strong> These variables set the camera's X and Y positions, ensuring that the camera follows the player by centering the view around the player's current location.</li>
+            <li><strong><code>camZ</code>:</strong> This determines the distance of the camera from the maze. It is calculated to give an appropriate field of view, ensuring the maze and player are visible from a good perspective.</li>
+            <li><strong><code>camera(camX, camY, camZ, camX, camY, 0, 0, 1, 0)</code>:</strong> This function sets the camera's position and orientation. The camera is placed at <code>(camX, camY, camZ)</code> and looks at the point <code>(camX, camY, 0)</code> with the up direction along the Z-axis.</li>
+          </ul>
+
+          <h4>Adding Lighting</h4>
+          <p>Lighting helps to make the maze and player visible and realistic. In this example, we use ambient light for general illumination and a point light that follows the player.</p>
+          <pre><code>
+          ambientLight(20, 20, 20);
+
+          let lightX = (playerX - maze[0].length / 2) * blockSize;
+          let lightY = (playerY - maze.length / 2) * blockSize;
+          pointLight(255, 255, 255, lightX, lightY, 100);
+          </code></pre>
+          <ul>
+            <li><strong><code>ambientLight(20, 20, 20)</code>:</strong> Adds a soft, general light to the entire scene. This helps to ensure that all parts of the maze and player are somewhat illuminated.</li>
+            <li><strong><code>pointLight(255, 255, 255, lightX, lightY, 100)</code>:</strong> Creates a white light that follows the player. The light is positioned at <code>(lightX, lightY, 100)</code>, which is based on the player's position. The <code>100</code> represents the Z-coordinate, which affects the light's distance from the scene.</li>
+          </ul>
+
+          <h4>Drawing the Maze</h4>
+          <p>The maze is represented as a grid of blocks, with each cell in the grid either a wall or an open space. The drawing logic translates each cell of the maze into a 3D box or colored block.</p>
+          <pre><code>
+          for (let y = 0; y < maze.length; y++) {
+            for (let x = 0; x < maze[0].length; x++) {
+              push();
+              translate((x - maze[0].length / 2) * blockSize, (y - maze.length / 2) * blockSize, 0);
+              if (maze[y][x] === 1) {
+                box(blockSize);
+              } else if (maze[y][x] === 2) {
+                fill(255, 0, 0);
+                box(blockSize);
+                fill(255);
+              }
+              pop();
+            }
+          }
+          </code></pre>
+          <ul>
+            <li><strong><code>push()</code> and <code>pop()</code>:</strong> These functions are used to save and restore the current drawing style and transformations. This ensures that transformations applied to one block do not affect others.</li>
+            <li><strong><code>translate((x - maze[0].length / 2) * blockSize, (y - maze.length / 2) * blockSize, 0)</code>:</strong> Moves the drawing context to the position of the current maze cell. This centers the maze in the view.</li>
+            <li><strong><code>if (maze[y][x] === 1)</code>:</strong> Checks if the current cell is a wall (represented by <code>1</code>) and draws a block if true.</li>
+            <li><strong><code>else if (maze[y][x] === 2)</code>:</strong> Checks if the cell is a goal (represented by <code>2</code>) and draws a red block if true.</li>
+          </ul>
+
+          <h4>Drawing the Player</h4>
+          <p>The player is drawn as a smaller block that follows the player's position in the maze. The player's position is adjusted to be above the maze level.</p>
+          <pre><code>
+          push();
+          translate((playerX - maze[0].length / 2) * blockSize, (playerY - maze.length / 2) * blockSize, blockSize / 2);
+          box(blockSize * 0.5);
+          pop();
+          </code></pre>
+          <ul>
+            <li><strong><code>translate((playerX - maze[0].length / 2) * blockSize, (playerY - maze.length / 2) * blockSize, blockSize / 2)</code>:</strong> Moves the drawing context to the player’s position, slightly raised above the maze to avoid overlapping with the maze blocks.</li>
+            <li><strong><code>box(blockSize * 0.5)</code>:</strong> Draws a smaller box to represent the player. The size is half the block size used for the maze.</li>
+          </ul>
+
+          <p>By following these steps, you will render both the maze and the player correctly in the 3D space, ensuring that the game visuals are accurate and the player’s movement through the maze is represented effectively.</p>
+        </div>
+
+        <div class="step">
+          <h3>Step 5: Player Movement</h3>
+          <p>In this step, you'll implement player movement within the maze using keyboard controls. You'll handle user inputs to move the player sprite and check for collisions or game win conditions.</p>
+
+          <h4>Code Breakdown</h4>
+          <p>Here's a detailed look at the <code>keyPressed</code> function which handles player movement:</p>
+
+          <pre><code>
+          function keyPressed() {
+            let nextX = playerX;
+            let nextY = playerY;
+
+            // Check for keyboard inputs and adjust the next position of the player
+            if (keyIsDown(LEFT_ARROW)) {
+              nextX--; // Move player left by decreasing the X coordinate
+            }
+            if (keyIsDown(RIGHT_ARROW)) {
+              nextX++; // Move player right by increasing the X coordinate
+            }
+            if (keyIsDown(UP_ARROW)) {
+              nextY--; // Move player up by decreasing the Y coordinate
+            }
+            if (keyIsDown(DOWN_ARROW)) {
+              nextY++; // Move player down by increasing the Y coordinate
+            }
+
+            // Check if the next position is within the maze and update player position
+            if (maze[nextY][nextX] === 0) {
+              // The position is an open path (0) - move player to this new position
+              playerX = nextX;
+              playerY = nextY;
+            } else if (maze[nextY][nextX] === 2) {
+              // The position is the goal (2) - mark the game as won
+              playerX = nextX;
+              playerY = nextY;
+              gameWon = true; // Set gameWon to true to trigger winning condition
+            }
+          }
+          </code></pre>
+
+          <h4>Understanding the Code</h4>
+          <ul>
+            <li><strong><code>let nextX = playerX;</code></strong> and <strong><code>let nextY = playerY;</code></strong>:</li>
+            <li>These lines create temporary variables <code>nextX</code> and <code>nextY</code> that hold the player's potential next position. They are initially set to the current position of the player.</li>
+
+            <li><strong><code>keyIsDown(LEFT_ARROW)</code>:</strong> This function checks if the left arrow key is being pressed. If true, it decrements <code>nextX</code>, which will move the player to the left by one unit on the X-axis.</li>
+            <li><strong><code>keyIsDown(RIGHT_ARROW)</code>:</strong> This checks if the right arrow key is pressed. If true, it increments <code>nextX</code>, moving the player to the right by one unit.</li>
+            <li><strong><code>keyIsDown(UP_ARROW)</code>:</strong> This checks if the up arrow key is pressed. If true, it decrements <code>nextY</code>, moving the player up by one unit on the Y-axis.</li>
+            <li><strong><code>keyIsDown(DOWN_ARROW)</code>:</strong> This checks if the down arrow key is pressed. If true, it increments <code>nextY</code>, moving the player down by one unit.</li>
+
+            <li><strong><code>if (maze[nextY][nextX] === 0)</code>:</strong> This checks if the next position (where the player intends to move) is an open path (represented by 0) in the maze. If it is, the player’s position is updated to <code>nextX</code> and <code>nextY</code>.</li>
+
+            <li><strong><code>else if (maze[nextY][nextX] === 2)</code>:</strong> This checks if the next position is the goal (represented by 2). If it is, the player’s position is updated and <code>gameWon</code> is set to <code>true</code>, indicating that the player has won the game.</li>
+          </ul>
+
+          <h4>Key Points</h4>
+          <ul>
+            <li>The function <code>keyPressed</code> is triggered whenever a key is pressed, and it updates the player's position based on which arrow key is pressed.</li>
+            <li>By updating <code>nextX</code> and <code>nextY</code> according to keyboard input, and then checking these positions against the maze grid, the function ensures the player moves only through valid paths or reaches the goal.</li>
+            <li>Make sure that the maze boundaries are considered to prevent the player from moving outside the maze. This is implicitly handled if the maze is correctly defined and the player is restricted by maze dimensions.</li>
+          </ul>
+        </div>
+
+
+
+        <div class="step-navigation">
+          <button id="prev" class="nav-btn">Previous</button>
+          <button id="next" class="nav-btn">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <center><iframe height="400" width="100%" src="https://gamejam-victoria-s-victorias1024.replit.app/" frameborder="0" allowfullscreen></iframe></center>
+
+    <div class="footer">
+      <p>&copy; 2024 ScriptCrew. All rights reserved.</p>
+    </div>
+    <div class="glow-effect" id="glowEffect"></div>
+    <div class="cursor-pointer" id="cursorPointer"></div>
+    <script src="script.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD1LX3S8XM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DD1LX3S8XM');
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,493 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  cursor: none; /* Hide the default cursor */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header .title {
+  font-size: 2.5em; /* Increase font size for more impact */
+  font-weight: bold; /* Make the font bold */
+  color: #e63946; /* Base red color */
+  transition: transform 0.3s ease, text-shadow 0.3s ease; /* Smooth transition effects */
+}
+
+.header .title:hover {
+  transform: scale(1.1); /* Scale up on hover */
+  text-shadow: 0 0 10px #e63946, 0 0 20px #e63946, 0 0 30px #d62828, 0 0 40px #d62828; /* Enhanced glow on hover */
+}
+
+.header .nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header .nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header .nav a:hover {
+  color: #e63946;
+  transform: scale(1.1);
+}
+
+.hero {
+  background-color: #1a1a1a;
+  padding: 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  color: #e63946;
+  font-size: 2.5em;
+  margin: 0;
+  animation: fadeIn 2s ease-out, textGlow 1.5s infinite alternate;
+  text-shadow: 0 0 10px #e63946, 0 0 20px #e63946, 0 0 30px #e63946;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin: 20px 0;
+  animation: fadeIn 2s ease-out 0.5s, textGlow 1.5s infinite alternate;
+}
+
+.btn-signup {
+  background-color: #e63946;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 30px;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-signup:hover {
+  background-color: #d62828;
+  transform: scale(1.05);
+}
+
+.features, .testimonials, .cta, .footer {
+  padding: 50px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.features:hover, .testimonials:hover, .cta:hover {
+  background-color: #333;
+}
+
+.features h2, .testimonials h2, .cta h2 {
+  color: #e63946;
+  margin-bottom: 20px;
+  animation: textGlow 1.5s infinite alternate;
+  text-shadow: 0 0 5px #e63946, 0 0 10px #e63946;
+}
+
+.footer {
+  background-color: #1a1a1a;
+  color: #e63946;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.footer a {
+  color: #e63946;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #d62828;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes textGlow {
+  from {
+      text-shadow: 0 0 5px #e63946;
+  }
+  to {
+      text-shadow: 0 0 20px #e63946, 0 0 30px #e63946;
+  }
+}
+
+.glow-effect {
+  position: absolute;
+  pointer-events: none; /* Ensure it doesn't interfere with mouse events */
+  width: 20px;
+  height: 20px;
+  background-color: rgba(230, 57, 70, 0.6);
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(230, 57, 70, 0.8);
+  transition: transform 0.1s ease;
+}
+
+.cursor-pointer {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: none; /* Ensure it doesn't interfere with mouse events */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  transition: transform 0.1s ease, background-color 0.3s ease;
+  transform: scale(1);
+}
+
+.cursor-pointer.active {
+  background-color: rgba(230, 57, 70, 0.9);
+  transform: scale(1.5);
+}
+
+.three-column-layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.code-section, .image-section, .text-section {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.code-section {
+  max-width: 33%;
+}
+
+.image-section {
+  max-width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.text-section {
+  max-width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.text-section h2 {
+  color: #e63946;
+  margin-bottom: 20px;
+}
+
+.text-section p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+/* Project Hero Section */
+.project-hero {
+  background-color: #1a1a1a;
+  padding: 50px;
+  text-align: center;
+}
+
+.project-hero h1 {
+  color: #e63946;
+  font-size: 2.5em;
+  text-shadow: 0 0 10px #e63946, 0 0 20px #e63946, 0 0 30px #d62828;
+  animation: textGlow 1.5s infinite alternate;
+}
+
+/* Project Content Section */
+.project-content {
+  padding: 50px;
+  background-color: #222;
+}
+
+/* Step Container */
+.step {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px; /* Adds space between steps */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: auto; /* Ensure the content fits and adds scrollbars if necessary */
+}
+
+.project-description h2 {
+  color: #e63946;
+  margin-bottom: 20px; /* Adds more space before the steps start */
+}
+
+.project-description h3 {
+  color: #e63946;
+  margin-bottom: 10px;
+  font-size: 1.3em; /* Slightly larger font size for headings */
+}
+
+.project-description p {
+  margin-bottom: 15px; /* Adds space between paragraphs */
+}
+
+.project-description pre {
+  background-color: #1a1a1a;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-x: auto;
+  margin-bottom: 20px; /* Adds space after code blocks */
+}
+
+.project-description code {
+  font-size: 1.1em; /* Slightly larger font size for code */
+}
+
+/* Play Button */
+.btn-play {
+  background-color: #e63946;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 20px;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-play:hover {
+  background-color: #d62828;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  background-color: #1a1a1a;
+  color: #e63946;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Keyframes for text glow */
+@keyframes textGlow {
+  from {
+      text-shadow: 0 0 5px #e63946;
+  }
+  to {
+      text-shadow: 0 0 20px #e63946, 0 0 30px #e63946;
+  }
+}
+
+/* Projects Container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.project {
+  position: relative;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 200px;
+  background-color: #444;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire container */
+  display: block; /* Remove any unwanted space below the image */
+}
+
+.project-title {
+  padding: 15px;
+  font-size: 1.2em;
+  text-align: center;
+  background-color: #1a1a1a;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pseudo-element for the red glow effect */
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(230, 57, 70, 0.2), transparent);
+  border-radius: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0.95);
+  z-index: 0;
+}
+
+.project:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.project:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.project-hero .author-name {
+  color: #fff;
+  font-size: 1.2em;
+  margin-top: 10px; /* Adds space between the title and author name */
+  font-style: italic; /* Italicize the author name for differentiation */
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .projects-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-container {
+      grid-template-columns: 1fr; /* 1 column for small screens */
+  }
+}
+
+.step-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  max-height: 500px; /* Adjust as needed */
+}
+
+.step {
+  display: none; /* Hide all steps initially */
+}
+
+.step.active {
+  display: block; /* Show only the active step */
+}
+
+.step-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.nav-btn {
+  background-color: #e63946;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #d62828;
+  transform: scale(1.05);
+}
+
+.glow-link {
+  color: #e63946;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-shadow: 0 0 5px #e63946, 0 0 10px #e63946;
+  transition: text-shadow 0.3s ease;
+}
+
+.glow-link:hover {
+  text-shadow: 0 0 10px #e63946, 0 0 20px #e63946;
+}
+
+.container {
+  padding: 50px;
+  text-align: center;
+  background-color: #222;
+}
+
+h1 {
+  color: #e63946;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+
+p {
+  color: #fff;
+  font-size: 1.2em;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column; /* Stacks links vertically */
+  align-items: center; /* Centers the links */
+  gap: 20px; /* Space between links */
+  margin-top: 20px; /* Space between the paragraph and the links */
+}

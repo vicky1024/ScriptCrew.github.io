@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScriptCrew - Making a Kill Brick</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="title">ScriptCrew</div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="Projects.html">Projects</a>
+      <a href="trying.html">Socials</a>
+    </div>
+  </div>
+
+  <div class="project-hero">
+    <h1>Making a Kill Brick</h1>
+    <p class="author-name">By Lezoiram</p>
+  </div>
+
+  <div class="project-content">
+    <div class="project-description">
+      <h2>Step-by-Step Instructions</h2>
+
+      <div class="step-container">
+        <!-- Step 1 -->
+        <div class="step active">
+          <h3>Introduction</h3>
+          <p>I’m sure at one point, you were playing a Roblox Obby, and thought “Wait, this doesn’t look too hard to make..”. Well you would be correct! Creating an Obby is one of the easiest games to make on Roblox. The genre goes back ages, close to when Roblox first released back in 2006! 
+
+            Now think, when you’re playing an Obby, what is the most annoying problem you come across, sometimes it’s the jumps,or falling in the void, but the main thing is the neon-colored block that kills you when you touch it.
+
+            The kill brick is one of the Obby’s core elements, it adds a bit of challenge in your Obby depending on where you put it, and you can code it all in under 20 minutes (or less!).
+</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <h3>Step 1: Setting Up Roblox Studio</h3>
+          <p>If you haven't already, download Roblox Studio from the <a href="https://create.roblox.com/" target="_blank">Roblox Creator Hub</a> and log in with your Roblox account.</p>
+          <p>Open Roblox Studio and create a new place or open an existing one. Familiarize yourself with the interface, using right-click to move the camera, WASD for navigation, and E/Q for moving up/down.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <h3>Step 2: Creating the Kill Brick</h3>
+          <p>Click “Part”. A small rectangular block should spawn upon clicking. Click the part, and look to the right of your screen, in the box that says “Explorer”. The part should be highlighted if you selected it.</p> 
+
+            <p>Rename it to “Killbrick” (or whatever other name you want it.) You can also click F2 as a shortcut for renaming things.</p>
+<p> Now to change the brick color, click “View” on the very top of your screen. Then click “Properties”. Most of you guys should already have this open, but just in case if you accidentally closed it, this is how you find it. Look under “Appearance”, and then look at BrickColor. Select any color you want, for this project I’m picking red. Then go under “Material”, and select “Neon”.</p> <p>You should have this on your screen so far. </p>
+          <center>
+            <img src="https://i.postimg.cc/Fk9KvQvt/Photo-2.jpg" alt="Creating the Kill Brick" style="width: 435px; height: auto;">
+          </center>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <h3>Step 3: Scripting the Kill Brick</h3>
+          <p>With the Killbrick selected, click the plus icon in the "Explorer" panel and add a "Script". Replace the default code with the following:</p>
+          <pre>
+local Kill = script.Parent
+local function kill(otherPart)
+  local partParent = otherPart.Parent
+  local humanoid = partParent:FindFirstChild("Humanoid")
+  if humanoid then
+    humanoid.Health = 0
+  end
+end
+Kill.Touched:Connect(kill)
+          </pre>
+          <p>This script detects when a player touches the Killbrick and sets their health to 0, effectively "killing" the player.</p>
+        </div>
+
+        <div class="step">
+          <h3>Notes on the Script</h3>
+          <p><strong>‘local’</strong> specifies that the function or variable is limited in scope to the block in which it is defined. This means that it can only be accessed or called from within that specific block of code. It’s telling the computer “You can only access this block of code and nothing else.”</p>
+          <p><strong>‘script.Parent’</strong> refers to the parent object of the script within the game hierarchy in Roblox. Game hierarchy goes something like “Parent” and “Child”. An example would be <br>Workspace = Parent, Killbrick = Child. But in the script’s context, it would be “Killbrick = Parent, and there is no “Child” because there’s nothing below Killbrick.</p>
+          <p><strong>‘function’</strong> are blocks of code that can be called through the code multiple times throughout the script.</p>
+          <p><strong>‘kill(otherPart)’</strong> This will be the part that touches the ‘Kill’ object, triggering the function.</p>
+          <p><strong>‘local partParent = otherPart.Parent’</strong> In Roblox, characters (like players) are composed of multiple parts grouped under a single model (typically called a "Model"). Accessing the parent helps identify the entire model that the part belongs to.</p>
+          <p><strong>‘local humanoid = partParent:FindFirstChild(“Humanoid”)’</strong> The "Humanoid" object is a component of player characters in Roblox that manages health, animations, and physics. Finding the Humanoid object is important for altering a character's health.</p>
+          <p><strong>‘if humanoid then’</strong> By checking if the Humanoid exists, the script makes sure that the following code only runs on characters (or models) that have a Humanoid component. In short, it’s saying “If the player touches the block.”</p>
+          <p><strong>‘humanoid.Health = 0’</strong> This sets the health of your character (Humanoid) to 0, which kills your character.</p>
+          <p><strong>‘end’</strong> is the end of the script.</p>
+          <p><strong>‘Kill.Touched:Connect(kill)’</strong> Remember the very first line we wrote, ‘local Kill = script.Parent’. ‘Kill’ calls this line of code.</p>
+          <p><strong>‘Touched’</strong> This is an event that belongs to Roblox. It fires whenever another part comes into contact with the part that has this script attached to it. (In this case, the player).</p>
+          <p><strong>‘Connect()’</strong> This method is used to bind a function to an event. When the event occurs, the connected function is called, thus the name “Connect”.</p>
+          <p><strong>‘(kill)’</strong> The function kill is passed as a parameter to the Connect method, indicating that this function should be executed whenever the Touched event occurs, like when the player touches the brick.</p>
+        </div>
+        <!-- Step 5 -->
+        <div class="step">
+          <h3>Step 4: Testing the Kill Brick</h3>
+          <p>Click the blue "Play" button to test your Killbrick. Walk your character into the Killbrick to ensure it works as expected. If it doesn't work, double-check your code or join the <strong>ScriptCrew debug server! (linked in socials).</strong></p>
+
+          <img src="https://i.postimg.cc/GHgmWNSN/Phote-4.jpg" alt="Creating the Kill Brick" style="width: 435px; height: auto;"> 
+
+          
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step">
+          <h3>Step 5: Debugging Tips</h3>
+          <p>If the Killbrick isn't functioning, review your script for any errors. Ensure all variables and functions are correctly defined and spelled. If necessary, you can copy and paste the provided code as a last resort.</p>
+          <p>If you continue to encounter issues, consider joining the ScriptCrew Debug server for additional support.</p>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="step">
+          <h3>Step 6: Customizing Your Kill Brick</h3>
+          <p>Before you go, you might want to move your kill brick, or make it a different shape! Here are some of the shortcut keys that will help you achieve just that. Remember, get used to the shortcut keys now, they will save you a lot of time later.</p> <p>Select the “Move” tool on the top left to move the part along a certain axis. Shortcut key: CTRL + 2</p>
+  <p>Select the “Scale” tool on the top left to scale the part. Shortcut key: CTRL + 3</p>
+  <p>Select the “Rotate” tool on the top left to turn the part any direction you want. Shortcut key: CTRL + 4</p> <p>To save your work, just hit CTRL + S. If it’s your first time saving, you can also rename your file and add a description.</p> <p>That’s it! You just learnt one of the core parts of an Obby.</p>
+
+        </div>
+
+        <!-- Conclusion -->
+        <div class="step">
+          <h3>Conclusion</h3>
+          <p>You've successfully created a Killbrick for your Roblox game! Experiment with different designs and properties to enhance your game's difficulty and aesthetic. Don't forget to save your work (Ctrl + S).</p>
+        </div>
+      </div>
+
+      <div class="step-navigation">
+        <button id="prev" class="nav-btn">Previous</button>
+        <button id="next" class="nav-btn">Next</button>
+      </div>
+    </div>
+
+    <a href="https://www.roblox.com/games/18792374515/Roblox-Obby-101" class="btn-play">Play Game</a>
+  </div>
+
+  <div class="footer">
+    <p>&copy; 2024 ScriptCrew. All rights reserved.</p>
+  </div>
+  <div class="glow-effect" id="glowEffect"></div>
+  <div class="cursor-pointer" id="cursorPointer"></div>
+  <script src="script.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD1LX3S8XM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DD1LX3S8XM');
+  </script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Website - Simple Platformer Game in Gamemaker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="title">ScriptCrew</div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="Projects.html">Projects</a>
+      <a href="trying.html">Socials</a>
+    </div>
+  </div>
+
+  <div class="project-hero">
+    <h1>Simple Platformer Game in Gamemaker</h1>
+    <p class="author-name">By Ariel Ontiveros</p>
+  </div>
+
+  <div class="project-content">
+    <div class="project-description">
+      <h2>Step-by-Step Instructions</h2>
+
+      <div class="step-container">
+        <div class="step active">
+          <p>Learn how to create a simple platformer game using Gamemaker!</p>
+
+          <h2>Getting Started</h2>
+
+          <h3>Step 1</h3>
+          <p>Open Gamemaker, click the button that says “New” and select “Game.” Then, select the option that says “Blank Game.”</p>
+
+           <img src="https://i.ibb.co/HBKJwFM/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+
+          <h3>Step 2</h3>
+          <p>For now, name the project “Simple Platformer.” You can change the name later if needed.</p>
+
+          <h3>Step 3</h3>
+          <p>Press the “Let’s Go!” button to proceed to the next steps.</p>
+        </div>
+
+        <div class="step">
+          <h2>Setting up the room(s)</h2>
+
+          <h3>Step 1</h3>
+          <p>Click on the “Rooms” folder and double click on Room 1. Set the width to 800 and height to 600.</p>
+           <img src="https://i.ibb.co/hf1gr3t/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          
+          <h3>Step 2</h3>
+          <p>Right click on the “Rooms” folder, select “Create,” and then “Room” (or press Alt + R). Set the width and height to 800 and 600, respectively.</p>
+
+          <h3>Step 3</h3>
+          <p>We’ve set up the rooms for now, but be prepared to make adjustments later if needed.</p>
+
+           <img src="https://i.ibb.co/jDcWzzN/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+  
+        </div>
+
+        <div class="step">
+          <h2>Creating the Player</h2>
+
+          <h3>Step 1</h3>
+          <p>Right click on the “Sprite” folder, select “Create,” and then click on “Sprite.”</p>
+
+          <h3>Step 2</h3>
+          <p>In the sprite editor, name the sprite “sprite_player” and set the canvas size to 24 x 24 pixels.</p>
+
+          <h3>Step 3</h3>
+          <p>Use the fill tool to color the entire canvas red. Close the “Sprite1” tab to save the sprite.</p>
+
+          <h3>Step 4</h3>
+          <p>Set the sprite’s origin to “Bottom Centre” using the dropdown menu.</p>
+          <img src="https://i.ibb.co/S6KqPQW/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          <h3>Step 5</h3>
+          <p>Right click on the “Objects” folder, select “Create,” and click on “Object.” Name the object “Player” and assign the “sprite_player” to it.</p>
+          <img src="https://i.ibb.co/NSpbZGH/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          <h3>Step 6</h3>
+          <p>One last thing, we will want to make the sprite’s origin the bottom center of the sprite. We do this by clicking on the drop down menu button that says “Top Left” and change it to “Bottom Centre” as shown below:</p>
+          <p>Now it is time to create our player object. In order to do things with our sprite, we need to make it an object in the game.</p>
+          <img src="https://i.ibb.co/qrCG9pm/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          <h3>Step 7</h3>
+          <p>Right click on the “Objects” folder, select “Create” and click on “Object.” (Or you can click on the Object folder and press Alt + O) You should now see something like this:</p>
+          <img src="https://i.ibb.co/L12jKyJ/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          <h3>Step 8</h3>
+          <p>We will call this object “Player.” You may have noticed that it says “No Sprite” in the sprite section. This means, well, we have no sprite selected for our object. </p>
+          <h3>Step 9</h3>
+          <p> To add a sprite for our object, we click on the “No Sprite” button, select the “Sprites” folder, and click on our sprite. That is all for creating our Sprite. Later, we will use code to make our sprite move.
+</p>
+          
+        </div>
+
+        <div class="step">
+          <h2>Creating the Floor Tiles</h2>
+          <p>In Gamemaker, we can create tile sets. Tile sets are collections of tiles that we can place in our rooms to make level making easier. Usually tile sets are created using an image containing all the tiles needed and are then divided into separate tiles. 
+</p>
+          <h3>Step 1</h3>
+          <p>We will want to create the sprite for the main tile we will be using. We will be doing something very similar to what we did creating the player sprite. </p>
+
+          <h3>Step 2</h3>
+          <p>We will create a sprite, name it “sprite_tile” and  set its width and height to 50 pixels instead of 25. Instead of coloring in the whole sprite, we will only color in the bottom right corner of the sprite. We can easily do this by using the coordinates at the bottom left of the sprite editor. </p>
+
+          <h3>Step 3</h3>
+          <p>We will use the color black and go to the coordinates (24,24) on the grid. Using the line tool, (If it isn’t already selected, use the smallest square brush so that it is easier to draw the square.) we will create a square by using the line to go straight down from the point (24,24) and going right from the same point. It should now look something like this:</p>
+          <img src="https://i.ibb.co/TqJLVMG/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/> 
+          <h3>Step 4</h3>
+          <p>We can now use the fill tool to fill in the empty space in the square.</p>
+
+          <h3>Step 5</h3>
+          <p>We will also want to set its origin to “Top Centre.”</p>
+          <h3>Step 6</h3>
+          <p>Now we will go to the “Tile Sets” folder, right click and create a tile set. (You can also click on the folder and press Alt + B) We will then be taken to a screen that asks for a sprite to be selected.</p>
+          <img src="https://i.ibb.co/8jYGpY8/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+
+          <h3>Step 7</h3>
+          <p>We will select the new sprite we have created and our new sprite should be visible at the top left corner of the grid. </p>
+          <h3>Step 8</h3>
+          <p>In order for us to be able to select and place down our tiles, we have to set the tile width and tile height to 25. The properties should now look like this:</p>
+          <img src="https://i.ibb.co/Lr0vBf3/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          <h3>Step 9</h3>
+          <p>We will now go to Room1 and create a new tile layer. To create a tile layer, we can simply click on the tile set icon shown below. (Pressing Ctrl + Alt + T is the shortcut to creating a tile layer)</p>
+          <img src="https://i.ibb.co/7Yz9xs0/image.png" alt="image"style="width: 200px; height: 350px;" border="0"/>
+          <h3>Step 10</h3>
+          <p>At the right side of the screen, we will click on “No Tile Set” to select the tile set we created. 
+            Now, you may have noticed that since our tile is black and the room’s background is black, the tile will be invisible. We can fix this by changing the background color of the room. 
+</p>
+          <h3>Step 11</h3>
+          <p>At the left of our screen we can see the layers, we will want to double click the background layer and set the color to this color (Hex code is #808080).</p>
+          
+          <p>Now we can go back to our tile set layer and we should see a tile with a checkerboard pattern and a black square next to it.</p>
+          <h3>Step 12</h3>
+          <p>We can now click on the tile and drag our mouse across the room to place tiles! With this we can create the basic outline of our first level. For now we can make something like this:</p>
+          <img src="https://i.ibb.co/xCrwPny/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          
+          <p>Now that we have our basic outline of our first level, we can also create the outline of our second level! </p>
+          <h3>Step 13</h3>
+          <p>We can go to room 2 and do what we did for Room1. To exit out of the tile asset editor we can click on the Assets tab at the top right of the screen. Once at room 2, we can do exactly what we did for room 1. Change the background color to be the same as room 1, add a tile set layer, and place down our tiles. Our second room can look like this:</p>
+          
+        </div>
+
+        <div class="step">
+          <h2>Player Movement and Collisions</h2>
+
+          <h3>Step 1</h3>
+          <p>Since our sprites are not solid objects, we can make them solid through collision blocks.  First, we want to create a new sprite. This sprite’s width will be 25 pixels wide and 25 pixels high and it will be light blue, though you can make it any color you want. It is also highly recommended that you change the opacity or in this case, alpha, of the color.</p>
+
+          <h3>Step 2</h3>
+          <p>We do this by clicking on the color we selected and it should take us to a color editor. Here we can change the alpha to 120 so that it does not cover up our tiles. </p>
+
+          <h3>Step 3</h3>
+          <p>This sprite’s name will be “sprite_solid_block” and its origin will be the same as the tile. (Top Centre) Before we can start making our player move, if we were to add gravity, our player would fall down forever so we need to add collision blocks so that when it collides, it stays on that block. First we would want to create an object for our collision block. 
+</p>
+
+          <h3>Step 4</h3>
+          <p>We will do something very similar to what we did for our player. We will create an object in the “Objects” folder, select the new sprite we just created, and name it “solid_collision_block” Now we can go back to our player object and make it move! (We also need to code the collision code first before we place the blocks)
+          </p>
+
+          <h3>Step 5</h3>
+          <p>In our player object we want to click on “Add Event” and add a “Create” event. This event runs once when an instance of an object is created and is usually for setting variables, which is exactly what we’ll be doing. You may have gotten a popup asking whether to use GML Code or GML Visual, for this tutorial we will use GML Code. (It is recommended that GML Code be used in other projects as well) 
+          </p>
+          <h3>Step 6</h3>
+          <p>We will click on the GML Code option and since we will be using it throughout the whole tutorial, we will also click on “Don’t ask again for this project.”
+          </p>
+          <h3>Step 7</h3>
+          <p>In the “Create” event, we will be setting these variables:
+          </p>
+          <pre><code>
+yspd = 0;
+grav = 0.50;
+jump_spd = -8;
+jumps = 0;
+max_jumps = 1;
+jumping = false;
+player_spd = 2;
+          </code></pre>
+
+          <p>yspd is how fast we move on the y axis</p>
+          <p>grav acts as our gravity</p>
+          <p>jump_spd is how fast we jump</p>
+          <p>jumps is how many times we can jump</p>
+          <p>max_jumps is how many times we can jump</p>
+          <p>jumping is whether or not we are jumping</p>
+          <p>player_spd is how fast we move on the x axis</p>
+          <h3>Step 8</h3>
+          <p>Now we want to go and add a “Step” event. The “Step” event of an object runs every game tick, the default number of ticks is 60 so the step event would activate 60 times a second. On the “Add Event” menu, we will see the option for multiple “Step” events, we want to select only the first one that says “Step.” Here, we will put the following code (get ready, because it will be quite a bit of code):</p>
+
+
+                    <pre><code>
+          //variables for left and right keyboard movement
+          var left_key = keyboard_check(vk_left);
+          var right_key = keyboard_check(vk_right);
+
+          hspeed =(right_key-left_key) * player_spd;
+
+          if x >= room_width - 12.5
+          {
+            x = room_width - 12.5;
+          }
+
+          if x <= 12.5
+          {
+            x = 12.5;
+          }
+
+          //jump movements
+          yspd += grav;
+
+          if keyboard_check_pressed(vk_up) && (jumps < max_jumps)
+          {
+            yspd = jump_spd;
+            jumps++;
+            jumping = true;
+          } else 
+          {
+          jumping = false;	
+          }
+
+          //Check for collisions
+          if (place_meeting(x + hspeed, y, solid_collision_block))
+          {
+            while (!place_meeting(x + sign(hspeed), y, solid_collision_block))
+            {
+              x = x + sign(hspeed);
+            }
+            hspeed = 0;
+          }
+          x = x + hspeed;
+
+          if (place_meeting(x, y + yspd, solid_collision_block) && jumping == false)
+          {
+            while (!place_meeting(x,y + sign(yspd), solid_collision_block))
+            {
+              y = y + sign(yspd);
+            }
+            yspd = 0;
+            jumping = false;
+            jumps = 0;
+          }
+          y = y + yspd;
+
+          if (place_meeting(x - 1,y, solid_collision_block) && yspd == 0)
+          {
+            x++;
+          }
+
+          if (place_meeting(x + 1, y, solid_collision_block) && yspd == 0)
+          {
+            x--;
+          }
+
+          if (place_meeting(x, y - 1, solid_collision_block))
+          {
+            y += 1.5;
+          }
+                    </code></pre>
+
+
+
+          
+          <p>This may be a lot of code but we will go through the code so that it’s less overwhelming.</p> <p>The double slashes are just for making notes and don’t do anything to the code.</p> The “var” is for setting a variable, but you might be thinking, what is the difference between setting a variable in the “Create” event and setting it in any other event with “var?” Well, variables set in the create event can be used in any event within the object and can even be referenced outside of the object.</p>
+          <p>Ex: If we were to go into the “solid_collision_block” object and put y += player.grav  (don’t actually do this, it is just an example), then the code would recognize the “player.grav” since it was set up in the “Create” event. (Oh and all of our blocks would fall!)</p>
+          <p>Meanwhile, the “var” is for setting variables that will only be recognized in the event it was defined in.</p>
+          <p>The “keyboard_check” function checks if a key is being pressed (held down). By the way, it is “right_key-left_key” in that order because if it were reversed, then the controls would also be reversed.</p>
+          <p>In this piece of code, the result of the right_key variable being subtracted by the left_key variable is being multiplied by our player speed to give us our hspeed. In this case, keyboard_check returns either a 1 or a 0 depending on whether or not the key mentioned is being pressed so our right_key and left_key can either be 1 or 0.</p>
+          <p>The “hspeed” is a built-in property that all instances have and it defines the horizontal speed of the instance.</p>
+          <p>If x >= room_width - 12.5” check if the player has reached the end of the right side of the screen, which is the width of the room minus half of the player’s width (25/2, it is not minus 25 because the player’s origin is located in the middle)</p>
+          
+          <p>The “if x <= 12.5” does the same thing except for the left side of the screen.</p>
+          <p>Next is the code for the y movements. The keyboard_check_pressed checks if a key was pressed. The “jumps (less than symbol) max_jumps ” checks if the amount of times we have jumped is less than the maximum amount of times we can jump. (Note: try toying around in the “Create” event and change the max_jumps variable to a different number! Remember to change it back to 1 when done.)</p>
+          
+          <p>“yspd = jump_spd” makes the player jump up. “jumps++” increases the amount of times the player has jumped by 1. “jumping = true” sets the “jumping” variable to true. The “else {jumping = false}” sets the jumping variables to false when the up key is not pressed.</p>
+          
+          <p>As stated by the note above the next piece of code, the “place_meeting” function checks if the player ever collides with the “solid_collision_block” object. The “while” function loops the code inside the curly brackets as long as the condition stays true. You may have noticed the exclamation mark next to the place_meeting function, this is the logical “NOT” operator which inverts the boolean (true or false) value. Like in our code, you can read the “while (!place_meeting(…))” as “while (NOT place_meeting(…))” The “sign(hspeed)” returns either a 1, -1, or 0 depending on whether the hspeed is positive, negative, or 0..The three “if place_meeting(...)”  statements after “y = y + yspd” are for checking for collisions on the other 3 sides of the object. We only checked for  collisions between the player and the top of the object, but we also needed to check for collisions between the player and the left, right, and bottom of the collision object.
+</p>
+          
+          <p>Now if we were to run our code we would just see our tiles and nothing else, that is because we have not placed our objects into the room. We will now go to our first room and drag our player into the room. </p>
+
+
+          <h3>Step 9</h3>
+          <p>Next we will drag our collision block into the room. (Note: if you received a message about creating an instance layer, then you do not need to create one, just click on “cancel” and double click on the instances layer at the top left of the screen and you should be taken to the instances layer where you can drag your objects into the room.)</p>
+            <p> may have noticed that the collision blocks don’t line up with the tiles. Luckily there is an easy fix to this issue! At the left of the screen when you have placed your collision block in the room you can click on your collision object and you will see its properties at the left of the screen. </p>
+
+          <h3>Step 10</h3>
+          <p>Under the properties you can adjust the object’s position by changing its x and y values. You can then adjust these values accordingly in order to make sure it aligns with the tiles.
+</p>
+          <img src="https://i.ibb.co/m8bhGLT/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          
+            <p>You may be thinking that you will have to do this many times over for every tile, but luckily there is a fast and easy way to make this process a lot quicker!</p>
+
+          <h3>Step 11</h3>
+          <p>When selecting the collision block, if you move your cursor to any side of the object, you have the ability to change its width and height. You can now have something like this:
+          </p>
+          <img src="https://i.ibb.co/Jpd84dm/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+          <h3>Step 12</h3>
+          <p>Now we can do this process for each of the platforms instead of every block! You may have noticed the scale for the objects under its properties, you can also adjust its width and height here and get even more exact with alignment! (It makes your game look a lot better) 
+          </p>
+
+          <h3>Step 13</h3>
+          <p>Now we can playtest our game! To run our code, we can go to the top of our screen and hit the play button OR we can press F5 on the keyboard. </p>
+          
+          
+        </div>
+
+        <div class="step">
+          <h2>Transitioning from Room to Room</h2>
+
+          <h3>Step 1</h3>
+          <p>If you haven’t already, go to your second room and place your collision objects so that your player doesn’t just fall forever when going into the next room.</p>
+
+          <h3>Step 2</h3>
+          <p>We will then create a sprite that will act as our goal. This goal will be 10 x 30 pixels and it will be called “sprite_goal” We can do something simple like a black and white checker pattern like this:</p>
+
+          <img src="https://i.ibb.co/F0qJVVv/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+
+          <p>(Using the middle largest square brush)</p>
+
+          <h3>Step 3</h3>
+          <p>Create an object called “goal” using the new sprite you just made.</p>
+          <img src="https://i.ibb.co/4431wWN/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+
+          <h3>Step 4</h3>
+          <p>Go to your player’s “Step” event and add the following code:</p>
+          <pre><code>
+if place_meeting(x, y, goal)
+{
+	room_goto(Room2);
+}
+          </code></pre>
+          <p>The “room_goto” function does exactly what it sounds like. It goes to the room specified in the parenthesis. (Note: if you have a different name for your room, replace “Room2” with the room name)</p>
+
+          <h3>Step 5</h3>
+          <p>Now all that is left is to drag the goal into the room wherever you want the goal to be! The goal may be small so in order to make it larger you can either go into the sprite and change its scale or change its scale in the object’s parameters. Don't forget to adjust the goal’s position for better alignment! You may notice that when you go to the other room, there is no player. </p>
+
+          <h3>Step 6</h3>
+          <p>All you have to do is go to the second room and drag your player wherever you want it to start!</p>
+        </div>
+        <div class="step-navigation">
+          <button id="prev" class="nav-btn">Previous</button>
+          <button id="next" class="nav-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+</div>
+
+<div class="footer">
+<p>&copy; 2024 ScriptCrew. All rights reserved.</p>
+</div>
+<div class="glow-effect" id="glowEffect"></div>
+<div class="cursor-pointer" id="cursorPointer"></div>
+<script src="script.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD1LX3S8XM"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-DD1LX3S8XM');
+</script>
+</body>
+</html>
+
+
+
+
+
+

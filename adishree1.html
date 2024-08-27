@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Website - Catch the Falling Objects</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="title">ScriptCrew</div>
+    <div class="nav">
+      <a href="index.html">Home</a>
+      <a href="Projects.html">Projects</a>
+      <a href="trying.html">Socials</a>
+    </div>
+  </div>
+
+  <div class="project-hero">
+    <h1>Python Grade Calculator</h1>
+    <p class="author-name">By Adishree Das</p>
+  </div>
+
+  <div class="project-content">
+    <div class="project-description">
+      <h2>Step-by-Step Instructions</h2>
+
+      <div class="step-container">
+      <div class="step active">
+        <p>Output letter grades from percentages using Python!</p>
+
+        <h2>PART 1: Set up Python & Visual Studio Code</h2>
+
+        <h3>Step 1</h3>
+        <p>This project will use a coding language called Python! You can download Python at <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> and follow the installation steps once downloaded.</p>
+
+        <h3>Step 2</h3>
+        <p>Visual Studio Code (VSC) is a code editor which we will use (if you want, you can use your own code editor). You can install VSC at <a href="https://code.visualstudio.com/download">https://code.visualstudio.com/download</a> and follow the installation procedure.</p>
+
+        <h3>Step 3</h3>
+        <p>Open Visual Studio Code. In the upper left corner, there should be 5 symbols, click the bottom symbol which looks like 4 squares (“extensions”).</p>
+
+        <h3>Step 4</h3>
+        <p>Once you click on the extension tab, search up Python & install the 1st extension called “Python” published by Microsoft.</p>
+
+        <h3>Step 5</h3>
+        <p>Now you are ready to start creating your project! At the top of the page, click FILE > NEW FILE, it should prompt you to type in a name - type in <code>gradecalculator.py</code>.</p>
+
+       <img src="https://i.ibb.co/hcPRBWL/image.png" alt="image"style="width: 350px; height: 200px;" border="0"/>
+
+        <p>NOTE: You can replace “gradecalculator” with whatever filename you want, just make sure to add “.py” at the end.</p>
+      </div>
+
+      <div class="step">
+        <h2>PART 2: Start coding the basic Python</h2>
+
+        <h3>Step 1</h3>
+        <p>Create an empty array called <code>grades</code> - later, we will add all the percentages in it. In Python, an array is a list of strings, numbers, or other datatypes. Arrays are created by using brackets <code>[ ]</code>.</p>
+        <pre><code>grades = []</code></pre>
+
+        <h3>Step 2</h3>
+        <p>Under this line of code, create a variable which takes user input and asks the user how many grades they want to enter using <code>input()</code>. Make sure to convert this user input into integer format using <code>int()</code>.</p>
+        <pre><code>num_grades = int(input("How many grades do you want to enter? "))</code></pre>
+
+        <h3>Step 3</h3>
+        <p>Write a for loop which repeats for every grade that the user enters, and adds the grade to the array. A for loop repeats for every number/value in a specified range or amount. In this case, our for loop will repeat for every number within the range which the user inputted.</p>
+        <pre><code>for num in range(num_grades):
+         grade = float(input("Enter 1 grade: "))
+         grades.append(grade)</code></pre>
+
+        <h3>Step 4</h3>
+        <p>Great! Now, above all of this code, we will define a function to calculate the grade. This function will take the grades as a parameter.</p>
+        <pre><code>def calculate_grade(grades):</code></pre>
+
+        <h3>Step 5</h3>
+        <p>Inside the <code>calculate_grade</code> function, create a variable called <code>average</code> which is the sum of the grades / the amount of grades.</p>
+        <pre><code>   average = sum(grades) / len(grades)</code></pre>
+
+        <h3>Step 6</h3>
+        <p>Below this line (still inside the function), we are going to write a series of <code>if/else/elif</code> statements for the program to calculate the letter grade. We want any average over 95 to be an A+, 90-95 to be an A, 85-90 to be a B+, 80-85 to be a B, 75-80 is C+, 70-75 is C, 65-70 is D+, and anything below 65 to be a F. (you can change these numbers based on your grading standards)</p>
+        <pre><code>   if average >= 95:
+             letter_grade = 'A+'
+         elif average >= 90:
+             letter_grade = 'A'
+         elif average >= 85:
+             letter_grade =  'B+'
+         elif average >= 80:
+             letter_grade = 'B'
+         elif average >= 75:
+             letter_grade =  'C+'
+         elif average >= 70:
+             letter_grade =  'C'
+         elif average >= 65:
+             letter_grade =  'D+'
+         elif average <= 65:
+             letter_grade = 'F'</code></pre>
+
+        <h3>Step 7</h3>
+        <p>We want this function to output the average and letter grade. We can do this using <code>return</code>. This will return a tuple containing the average and <code>letter_grade</code>. A tuple in Python is used to store multiple items in one variable.</p>
+        <pre><code>   return average, letter_grade</code></pre>
+
+        <h3>Step 8</h3>
+        <p>Now go to the bottom of your program, after the previously written for loop. We will call the <code>calculate_grade</code> function taking the array <code>grades</code> as an argument. Then, we will assign the returned tuple to two different variables - <code>average</code> and <code>letter_grade</code>.</p>
+        <pre><code>average, letter_grade = calculate_grade(grades)</code></pre>
+
+        <h3>Step 9</h3>
+        <p>Lastly, we want to output our code to the terminal. We can do this using <code>print</code> and string concatenation.</p>
+        <pre><code>print("The average grade is: " + str(average))
+      print("The letter grade is: " + str(letter_grade))</code></pre>
+
+        <p>Try running your code! You can do this by navigating to the correct folder in terminal using <code>cd</code> command, and then running the command <code>python3 filename.py</code>. The output should be functional now!</p>
+      </div>
+
+      <div class="step">
+        <h2>PART 3: FORMATTING!</h2>
+
+        <h3>Step 1</h3>
+        <p>Our next steps will be how to format the output to look nicer! Firstly, we will add an <code>if</code> statement in the case where the user doesn’t provide grades as input. This will be inside the <code>calculate_grade</code> function at the top.</p>
+        <pre><code>   if not grades:
+             return None, "No grades provided"</code></pre>
+
+        <h3>Step 2</h3>
+        <p>Scroll to the bottom of your program (near the existing print commands). Above these, we will create another print command, acting as a header. We will format it using an <code>f</code> string, and centering this header within a 30 character wide field.</p>
+        <pre><code>print(f"\n{'Grade Report':^30}")</code></pre>
+
+        <h3>Step 3</h3>
+        <p>Next we’ll create a dashed line between the header and other print outputs. This can be done using the following line of code:</p>
+        <pre><code>print(f"{'-' * 30}")</code></pre>
+
+        <h3>Step 4</h3>
+        <p>We will delete the 2 existing print commands that output the average and letter grade. Instead, we will replace them with formatted prints. The following lines of code with right-align the text and numbers with 20 spaces reserved for each value.</p>
+        <pre><code>print(f"Number of Grades: {num_grades:>20}")
+      print(f"Average Grade: {average:>20.2f}")
+      print(f"Letter Grade: {letter_grade:>20}")</code></pre>
+
+        <p>Try running the code again! This time, your code output will look a lot nicer and neater.</p>
+      </div>
+      <div class="step-navigation">
+        <button id="prev" class="nav-btn">Previous</button>
+        <button id="next" class="nav-btn">Next</button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="footer">
+    <p>&copy; 2024 ScriptCrew. All rights reserved.</p>
+  </div>
+  <div class="glow-effect" id="glowEffect"></div>
+  <div class="cursor-pointer" id="cursorPointer"></div>
+  <script src="script.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD1LX3S8XM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DD1LX3S8XM');
+  </script>
+</body>
+</html>
+

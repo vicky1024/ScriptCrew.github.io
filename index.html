@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="title">ScriptCrew</div>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="Projects.html">Projects</a>
+            <a href="trying.html">Socials</a>
+        </div>
+    </div>
+    <div class="hero">
+        <h1>Learn, Create, and Share Coding Projects</h1>
+        <p>Join a <strong>vibrant</strong> community of coders and enhance your skillgit init
+</p>
+        <a href="Projects.html" class="btn-signup">Get Started</a>
+    </div>
+    <div class="three-column-layout">
+        <div class="code-section">
+            <!-- You can add additional content here if needed -->
+        </div>
+        <div class="image-section">
+            <a href="https://imgbb.com/">
+                <img src="https://i.ibb.co/fDBJFdx/mascot2.webp" alt="mascot2" border="0">
+            </a>
+        </div>
+        <div class="text-section">
+            <!-- You can add additional content here if needed -->
+        </div>
+    </div>
+    <div class="features">
+        <h2>What We Give</h2>
+        <p>Fun coding projects, games to play, and people to connect with on our socials!</p>
+    </div>
+    <div class="testimonials">
+        <h2>We aren't here for the money</h2>
+        <p>We're here to help you learn and create. It brings us joy!</p>
+    </div>
+    <div class="cta">
+        <h2>Join Our Community</h2>
+        <a href="trying.html" class="btn-signup">Join Our Socials</a>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 ScriptCrew</p>
+
+    </div>
+    <div class="glow-effect" id="glowEffect"></div>
+    <div class="cursor-pointer" id="cursorPointer"></div>
+    <script>
+        // JavaScript to move the glow effect and custom cursor with the mouse
+        document.addEventListener('mousemove', (event) => {
+            const glowEffect = document.getElementById('glowEffect');
+            const cursorPointer = document.getElementById('cursorPointer');
+            
+            glowEffect.style.left = `${event.pageX - glowEffect.offsetWidth / 2}px`;
+            glowEffect.style.top = `${event.pageY - glowEffect.offsetHeight / 2}px`;
+
+            cursorPointer.style.left = `${event.pageX - cursorPointer.offsetWidth / 2}px`;
+            cursorPointer.style.top = `${event.pageY - cursorPointer.offsetHeight / 2}px`;
+        });
+
+        // JavaScript to activate the custom cursor effect on hover
+        document.querySelectorAll('a, .btn-signup').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                document.getElementById('cursorPointer').classList.add('active');
+            });
+            element.addEventListener('mouseout', () => {
+                document.getElementById('cursorPointer').classList.remove('active');
+            });
+        });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD1LX3S8XM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DD1LX3S8XM');
+    </script>
+</body>
+</html>

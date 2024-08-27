@@ -1,0 +1,192 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Coding Website - Catch the Falling Objects</title>
+          <link rel="stylesheet" href="style.css">
+        </head>
+        <body>
+          <div class="header">
+            <div class="title">ScriptCrew</div>
+            <div class="nav">
+              <a href="index.html">Home</a>
+              <a href="Projects.html">Projects</a>
+              <a href="trying.html">Socials</a>
+            </div>
+          </div>
+
+          <div class="project-hero">
+            <h1>Catch the Falling Objects</h1>
+            <p class="author-name">By Natalie Rodriguez</p>
+          </div>
+
+          <div class="project-content">
+            <div class="project-description">
+              <h2>Step-by-Step Instructions</h2>
+
+              <div class="step-container">
+                <div class="step active">
+                  <h3>Step 1: Setting Up Your File</h3>
+                  <p>Fork this Repl: <a href="https://replit.com/@bellapink214/Catch-The-Falling-Objects-Starter-Code" target="_blank">Catch The Falling Objects Starter Code</a></p>
+                  <p>This is what you should see:</p>
+                  <p>Preview:</p>
+                  <img src="https://i.ibb.co/H2z8tpQ/image.png" alt="image" style="width: 435px; height: auto;" border="0">
+                </div>
+
+                <div class="step">
+                  <h3>Step 2: Create Your Variables</h3>
+                  <p>You will have three variables that you will create before the setup function: the falling object, the player, and the score. Typically, you name your variables using camelCase, with no spaces and a capital letter to separate words.</p>
+                  <p>Since player and fallingObj will be sprites, you don’t need to set them equal to anything. Set the initial score to 0.</p>
+                  <p>Note: Don’t forget the semicolon at the end of every line of code!</p>
+                  <pre><code>let spriteOne;
+        let variable = 0;</code></pre>
+                </div>
+
+                <div class="step">
+                  <h3>Step 3: Creating Sprites</h3>
+                  <p>Create two new sprites in the setup function:</p>
+                  <pre><code>spriteOne = new Sprite(x, y, w, h);
+        spriteTwo = new Sprite(x, y, d);</code></pre>
+                  <p>The x and y represent the position of the sprite. The w and h represent the width and height of the sprite. If you want a circle instead of a rectangle, use d for diameter.</p>
+                  <center><img src="https://i.ibb.co/qY5cpQG/image.png" alt="image" style="width: 300px; height: 200px;" border="0"/></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 4: Sprite Colliders</h3>
+                  <p>A sprite's collider is used to detect collisions with other sprites. By default, sprites have a 'dynamic' physics collider that allows the sprite to move freely and be affected by gravity. 'Static' colliders can't be moved, and 'kinematic' colliders can be moved programmatically but not by other sprites. They also won't collide with other kinematic colliders.</p>
+                  <p>To set the collider type, you add it after the size. You can set them by using the first letter of the collider type name: 'd', 's', 'k'.</p>
+                  <pre><code>spriteOne = new Sprite(x, y, w, h, 'k');</code></pre>
+                </div>
+
+                <div class="step">
+                  <h3>Step 5: Sprite Movement - Falling Object</h3>
+                  <p>Think about the type of movement the fallingObj sprite and the player sprite need. Velocity is often used in video games to simulate moving objects. This is because velocity tells us how quickly an object is moving and in what direction. Since we want to change the vertical motion of our sprite, we use the y-position. The number sets the speed and direction.</p>
+                  <pre><code>spriteOne.vel.y = #;</code></pre>
+                  <center><img src="https://i.ibb.co/7pwXJpw/image.png" alt="image" style="width: 275px; height: 140px;" border="0"/></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 6: Sprite Movement - Player</h3>
+                  <p>In the draw function, use kb.pressing('key') within an if statement to control the player's movement.</p>
+                  <pre><code>if (kb.pressing("left")) {
+          spriteOne.vel.x = #;
+        }</code></pre>
+                  <center><img src="https://i.ibb.co/ZGnLSNz/image.png" alt="image" style="width: 300px; height: 200px;"border="0"></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 7: Sprite Trail</h3>
+                  <p>You might notice that both sprites are leaving a sort of trail when they are moving. This is because every time they move, they are drawing themselves over and over. We can fix this by setting the background in the draw function instead of the setup function.</p>
+                </div>
+
+                <div class="step">
+                  <h3>Step 8: Keeping Sprites in the Screen - Falling Object</h3>
+                  <p>First, update the position of player and fallingObj so that player starts at the bottom and fallingObj starts at the beginning. To send back fallingObj to the top once it reaches the bottom, use an if statement.</p>
+                  <pre><code>if (spriteOne.y >= height) {
+          spriteOne.y = 20;
+          spriteOne.x = random(width);
+        }</code></pre>
+                </div>
+
+                <div class="step">
+                  <h3>Step 9: Keeping Sprites in the Screen - Player</h3>
+                  <p>To keep the player sprite from moving out of the screen, use an if statement to check the x-position.</p>
+                  <pre><code>if (spriteOne.x < #) {
+          spriteOne.x = #;
+        }</code></pre>
+                </div>
+
+                <div class="step">
+                  <h3>Step 10: Sprites Colliding</h3>
+                  <p>At the end of the draw function, add an if statement that checks whether the falling object is colliding with the player.</p>
+                  <pre><code>if (spriteOne.collides(spriteTwo)) {
+          spriteOne.direction = "down";
+        }</code></pre>
+                </div>
+
+                <div class="step">
+                  <h3>Step 11: Adding the Score and Instructions</h3>
+                  <p>Use the text function to draw the score to the top left corner of the screen and the instructions to the top right of the screen.</p>
+                  <pre><code>fill(#); // This sets the color, use RGB
+        textSize(#);
+        textFont("Verdana");
+        text("Score: " + score, x, y);</code></pre>
+                  <center><img src="https://i.ibb.co/2hKHJSQ/image.png" alt="image" style="width: 350px; height: 200px;" border="0"></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 12: Updating the Score</h3>
+                  <p>At the moment, the score is not changing. To change the score, increment it when the player sprite and the fallingObj sprite collide.</p>
+                  <pre><code>score = score + 1;</code></pre>
+                </div>
+
+                <div class="step">
+                  <h3>Step 13: Winning and Losing</h3>
+                  <p>Create two if statements in the draw function, one for when the user wins and another for when the user loses.</p>
+                  <pre><code>if (score == winningScore) {
+          // Winning logic
+        }
+
+        if (score == losingScore) {
+          // Losing logic
+        }</code></pre>
+                  <center><img src="https://i.ibb.co/BZhRx1p/image.png" alt="image" style="width: 290px; height: 200px border=0 padding: 10px"></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 14: Adding Images</h3>
+                  <p>Upload three image files: one for a background, one for the falling object, and one for the player. Move them all into the assets folder. Create variables for each image and load them in the preload function.</p>
+                  <pre><code>let backgroundImg;
+        let spriteOneImg;
+        let spriteTwoImg;
+
+        function preload() {
+          backgroundImg = loadImage("assets/nightsky.jpg");
+          spriteOneImg = loadImage("assets/player.png");
+          spriteTwoImg = loadImage("assets/fallingObj.png");
+        }</code></pre>
+                  <center><img src="https://i.ibb.co/RPHzfww/image.png" alt="image"style="width: 290px; height: 200px"; border= "0"/></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 15: Adding Background Image</h3>
+                  <p>In the draw function, use the image function to display the background image. You may need to resize the image to fit the canvas in the setup function.</p>
+                  <pre><code>image(backgroundImg, 0, 0);</code></pre>
+                  <center><img src="https://i.ibb.co/WgbGfF8/image.png" alt="image" style="width: 300px; height: 220px;" border="0"></center>
+                </div>
+
+                <div class="step">
+                  <h3>Step 16: Adding Sprite Images</h3>
+                  <p>Assign images to the player and fallingObj sprites, and remove the numbers that represent the size. Resize the images as necessary.</p>
+                  <pre><code>spriteOne = new Sprite(spriteOneImg, x, y, "k");</code></pre>
+                </div>
+              </div>
+
+              <div class="step-navigation">
+                <button id="prev" class="nav-btn">Previous</button>
+                <button id="next" class="nav-btn">Next</button>
+              </div>
+            </div>
+
+
+          </div>
+          <center><iframe height="400" width="100%" src="https://catch-the-falling-objects-starter-code-test-victorias1024.replit.app/" frameborder="0" allowfullscreen></iframe></center>
+    
+          <div class="footer">
+            <p>&copy; 2024 ScriptCrew. All rights reserved.</p>
+          </div>
+          <div class="glow-effect" id="glowEffect"></div>
+          <div class="cursor-pointer" id="cursorPointer"></div>
+          <script src="script.js"></script>
+          <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD1LX3S8XM"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DD1LX3S8XM');
+          </script>
+        </body>
+        </html>
